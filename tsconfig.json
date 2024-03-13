@@ -1,0 +1,19 @@
+{
+  "include": ["app", "./routes/", "./utils/", "./log/"],
+  "exclude": [],
+  "compilerOptions": {
+    "target": "es2015",
+    "moduleResolution": "node",
+    "strict": false,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "outDir": "./",
+    "lib": ["ESNext", "DOM"],
+    "sourceMap": true,
+    "declaration": true,
+    // "allowJs": true,
+    "jsx": "preserve",
+    "composite": true
+  }
+}

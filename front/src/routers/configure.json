@@ -1,0 +1,33 @@
+{
+  "routersLibrary": [
+    {
+      "pathKey": "../views/colorlibrary/index.vue",
+      "path": "/colorlibrary",
+      "name": "颜色库",
+      "icon": "dashboard",
+      "hidden": true
+    },
+    {
+      "pathKey": "fashionslibrary",
+      "path": "/fashionslibrary",
+      "name": "款式库",
+      "icon": "dashboard"
+    },
+    {
+      "pathKey": "",
+      "path": "/system",
+      "name": "系统管理",
+      "icon": "Setting",
+      "meta": {
+        "affix": true
+      },
+      "children": [
+        {
+          "pathKey": "../views/system/tag/index.vue",
+          "path": "/system/tag",
+          "name": "标签管理"
+        }
+      ]
+    }
+  ]
+}
