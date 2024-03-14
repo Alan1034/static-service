@@ -31,8 +31,10 @@ npm run serve
 ### 前端打包：
 
 本地：`npm run build`
+普通打包，不需要配置nginx
 
 线上：`npm run build-online`
+前端会添加/static-service/前缀，使用此命令打包需要配置nginx
 
 ## 生成exe文件
 
