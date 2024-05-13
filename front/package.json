@@ -3,7 +3,7 @@
   "version": "1.20231018.3",
   "scripts": {
     "serve": "cross-env CURRENT_ENV=dev vite",
-    "serve:online": "cross-env CURRENT_ENV=dev vite",
+    "serve:online": "cross-env CURRENT_ENV=online vite",
     "build": "run-p type-check && cross-env CURRENT_ENV=prod run-p build-only",
     "build-online": "run-p type-check && cross-env NODE_ENV=online CURRENT_ENV=prod run-p build-only",
     "preview": "cross-env CURRENT_ENV=prod vite preview",
