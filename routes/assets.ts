@@ -28,13 +28,13 @@ const utf8 = require("utf8");
  */
 const getdir = (filePath = "", name = "") => {
   // console.log("filePath", filePath)
-  console.log("path.delimiter", path.sep);
+  // console.log("path.delimiter", path.sep);
   filePath = filePath.replace(/\//gm, "\\");
   const filePaths = filePath.split(path.sep);
-  console.log("filePaths", filePaths);
-  console.log("name", name);
+  // console.log("filePaths", filePaths);
+  // console.log("name", name);
   const fileDirList = new Set(["./", "public", "assets", ...filePaths, name]);
-  console.log("fileDirList", fileDirList);
+  // console.log("fileDirList", fileDirList);
   return path.join(...[...fileDirList]);
 };
 router.get("/assetsDir", function (req, res, next) {
