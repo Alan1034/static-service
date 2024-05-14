@@ -1,6 +1,6 @@
 {
   "name": "static-service",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start-hot": "nodemon ./bin/www",
     "start": "run-p build-ts && node ./bin/www",
