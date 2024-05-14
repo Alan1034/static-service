@@ -74,7 +74,7 @@ node_modules可以在服务器的nodejs环境下使用`npm install`安装
 
 `pm2 deploy production setup`
 
-初次部署和更新：
+初次部署和**更新**：
 
 `pm2 deploy production`
 
