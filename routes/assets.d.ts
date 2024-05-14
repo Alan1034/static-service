@@ -14,7 +14,7 @@ declare const fs: any;
 declare const path: any;
 declare const busboy: any;
 declare const multiparty: any;
-declare const fileCheck: any;
+declare const typeCheck: any, fileCheck: any;
 declare const saveLog: any;
 declare const utf8: any;
 /**

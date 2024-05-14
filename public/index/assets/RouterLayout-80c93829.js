@@ -1,0 +1,1 @@
+import{r as e,c as r,o as t}from"./vendor-fb665583.js";import{_ as c}from"./index-cbefa1fa.js";const s={};function n(_,a){const o=e("router-view");return t(),r(o)}const i=c(s,[["render",n],["__file","D:/work/static-service/front/src/layouts/RouterLayout.vue"]]);export{i as default};

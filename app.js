@@ -16,7 +16,7 @@ var logger = require('morgan');
 var ejs = require('ejs');
 var assets = require('./routes/assets');
 var indexRouter = require('./routes/index');
-var personnelRouter = require('./routes/personnel');
+// var personnelRouter = require('./routes/personnel');
 const { Console } = require('console');
 
 var app = express();
@@ -46,7 +46,7 @@ app.use(express.static(path.join('./', 'public'), {
 
 app.use('/', indexRouter);
 app.use('/assets', assets);
-app.use('/personnel', personnelRouter);
+// app.use('/personnel', personnelRouter);
 
 app.all('*', function (req, res, next) {
   // 统一设置请求头
