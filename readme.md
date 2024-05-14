@@ -60,7 +60,17 @@ node_modules可以在服务器的nodejs环境下使用`npm install`安装
 
 ### 直接部署：
 
+`git clone git@github.com:Alan1034/static-service.git`
+
+`pm2 delete id 或者 pm2 delete all`
+
+`cd static-service/`
+
 `pm2 start ecosystem.config.js`
+
+PM2命令列表:
+
+https://pm2.fenxianglu.cn/docs/start#%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8
 
 ### 远程部署：
 

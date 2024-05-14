@@ -29,7 +29,7 @@ const utf8 = require("utf8");
 const getdir = (filePath = "", name = "") => {
   // console.log("filePath", filePath)
   // console.log("path.delimiter", path.sep);
-  filePath = filePath.replace(/\//gm, "\\");
+  filePath = filePath.replace(/\//gm, path.sep);
   const filePaths = filePath.split(path.sep);
   // console.log("filePaths", filePaths);
   // console.log("name", name);
