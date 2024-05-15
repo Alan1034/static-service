@@ -62,11 +62,17 @@ node_modules可以在服务器的nodejs环境下使用`npm install`安装
 
 `git clone git@github.com:Alan1034/static-service.git`
 
-`pm2 delete id 或者 pm2 delete all`
+`pm2 delete` id 或者 `pm2 delete all`
 
 `cd static-service/`
 
 `pm2 start ecosystem.config.js`
+
+更新:
+
+`git pull`
+
+`pm2 reload all`
 
 PM2命令列表:
 
