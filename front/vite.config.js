@@ -51,6 +51,12 @@ export default defineConfig(({ command, mode }) => {
           // rewrite: (path) => path.replace(/^\/api/, ''),
           // secure: false, // 如果是https接口，需要配置这个参数 
         },
+        '/auth': {
+          target: 'http://localhost:3001/',
+          changeOrigin: true,
+          // rewrite: (path) => path.replace(/^\/api/, ''),
+          // secure: false, // 如果是https接口，需要配置这个参数 
+        },
         //   '/weixinRobot': {
         //     target: 'https://test.com', changeOrigin: true, secure: false, // 如果是https接口，需要配置这个参数 
         //   }

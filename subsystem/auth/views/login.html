@@ -1,0 +1,39 @@
+<!--
+ * @Author: 陈德立*******419287484@qq.com
+ * @Date: 2024-07-01 18:45:50
+ * @LastEditTime: 2024-07-01 18:46:16
+ * @LastEditors: 陈德立*******419287484@qq.com
+ * @Github: https://github.com/Alan1034
+ * @Description: 
+ * @FilePath: \static-service\subsystem\auth\views\login.html
+ * 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Login</h1>
+
+  Try accessing <a href="/restricted">/restricted</a>, then authenticate with "tj" and "foobar".
+  <form method="post" action="/login">
+    <p>
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username">
+    </p>
+    <p>
+      <label for="password">Password:</label>
+      <input type="text" name="password" id="password">
+    </p>
+    <p>
+      <input type="submit" value="Login">
+    </p>
+  </form>
+</body>
+
+</html>

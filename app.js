@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2024-03-05 18:14:36
- * @LastEditTime: 2024-03-11 14:39:02
+ * @LastEditTime: 2024-07-01 18:21:11
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -15,6 +15,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
 var assets = require('./routes/assets');
+var auth = require('./subsystem/auth/index');
 var indexRouter = require('./routes/index');
 // var personnelRouter = require('./routes/personnel');
 const { Console } = require('console');
@@ -46,6 +47,7 @@ app.use(express.static(path.join('./', 'public'), {
 
 app.use('/', indexRouter);
 app.use('/assets', assets);
+app.use('/auth', auth);
 // app.use('/personnel', personnelRouter);
 
 app.all('*', function (req, res, next) {
