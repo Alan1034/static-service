@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2024-03-05 18:14:36
- * @LastEditTime: 2024-07-02 17:47:43
+ * @LastEditTime: 2024-07-02 18:51:22
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -14,12 +14,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const { serviceRegistry } = require('./serviceRegistry');
 var ejs = require('ejs');
 var assets = require('./routes/assets');
 var indexRouter = require('./routes/index');
 // var personnelRouter = require('./routes/personnel');
-const { Console } = require('console');
 
 var app = express();
 
@@ -50,13 +48,12 @@ app.use('/', indexRouter);
 app.use('/assets', assets);
 // 动态代理请求到相应的Nuxt应用
 app.use('/auth', (req, res, next) => {
-  console.log("auth")
   // const appName = req.params.appName;
+  const { serviceRegistry } = require('./serviceRegistry');
   const appName = "auth";
   const targetPort = serviceRegistry[appName];
-  console.log(targetPort)
   if (targetPort) {
-    const{host,port}=targetPort
+    const { host, port } = targetPort
     const proxy = createProxyMiddleware({
       target: `http://${host}:${port}`,
       pathRewrite: { [`^/${appName}`]: '' },
