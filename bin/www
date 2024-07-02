@@ -4,33 +4,58 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('express:server');
-var http = require('http');
+// var app = require('../app');
+const { serviceRegistry,setPort } = require('../serviceRegistry');
+const debug = require('debug')('express:server');
+const http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 /**
- * 设置端口号为3001
- */
-process.env.PORT=3001
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
+ * 设置默认端口号为3000
  */
 
-var server = http.createServer(app);
+process.env.PORT = 3000
+Promise.all(Object.keys(serviceRegistry).map((serviceName) => {
+  let message = ``
+  try {
+    const serverItem = serviceRegistry[serviceName]
+    const { app } = serverItem
+    let { port } = serverItem
+    if ((!app) || (!app.set)) {
+      throw new Error(`${serviceName}app不存在`)
+    }
+    if (!port) {
+      port = process.env.PORT
+      process.env.PORT += 1000
+      setPort(serviceName,port)
+    }
+    const normalizeport = normalizePort(port);
+    app.set('port', normalizeport);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+    /**
+     * Create HTTP server.
+     */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+    const server = http.createServer(app);
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+    message = `${serviceName}创建成功`
+    server.listen(normalizeport);
+    server.on('error', onError);
+    server.on('listening', () => onListening(server));
+
+  } catch (error) {
+    console.error(serviceName, error)
+    message = `${serviceName}报错`
+  }
+  return message
+})).then((values) => {
+  console.info(values);
+})
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -84,9 +109,9 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+function onListening(server) {
+  const addr = server.address();
+  const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);

@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2024-03-05 18:14:36
- * @LastEditTime: 2024-07-01 18:21:11
+ * @LastEditTime: 2024-07-02 17:47:43
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -13,9 +13,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const { serviceRegistry } = require('./serviceRegistry');
 var ejs = require('ejs');
 var assets = require('./routes/assets');
-var auth = require('./subsystem/auth/index');
 var indexRouter = require('./routes/index');
 // var personnelRouter = require('./routes/personnel');
 const { Console } = require('console');
@@ -47,7 +48,25 @@ app.use(express.static(path.join('./', 'public'), {
 
 app.use('/', indexRouter);
 app.use('/assets', assets);
-app.use('/auth', auth);
+// 动态代理请求到相应的Nuxt应用
+app.use('/auth', (req, res, next) => {
+  console.log("auth")
+  // const appName = req.params.appName;
+  const appName = "auth";
+  const targetPort = serviceRegistry[appName];
+  console.log(targetPort)
+  if (targetPort) {
+    const{host,port}=targetPort
+    const proxy = createProxyMiddleware({
+      target: `http://${host}:${port}`,
+      pathRewrite: { [`^/${appName}`]: '' },
+      changeOrigin: true,
+    });
+    return proxy(req, res, next);
+  } else {
+    res.status(404).send('Service not found');
+  }
+});
 // app.use('/personnel', personnelRouter);
 
 app.all('*', function (req, res, next) {

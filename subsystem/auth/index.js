@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2024-07-01 14:57:37
- * @LastEditTime: 2024-07-01 18:42:01
+ * @LastEditTime: 2024-07-02 16:12:47
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description:
@@ -90,7 +90,7 @@ app.get('/logout', function (req, res) {
 app.get('/login', function (req, res) {
     res.render('login');
 });
-app.post('/login', function (req, res, next) {
+router.post('/login', function (req, res, next) {
     authenticate(req.body.username, req.body.password, function (err, user) {
         if (err)
             return next(err);
@@ -117,15 +117,8 @@ app.post('/login', function (req, res, next) {
     });
 });
 
-// const auth = function (req, res, next) {
-//     console.log("auth")
-
-//     next()
-// }
-router.get('/login', function (req, res, next) {
-    console.log(req)
-    console.log(res)
-    res.render('../subsystem/auth/views/login', {});
+router.get('/', function (req, res, next) {
+    res.render(path.resolve('subsystem/auth/views/login'), {});
 });
 module.exports = router;
 //# sourceMappingURL=index.js.map
