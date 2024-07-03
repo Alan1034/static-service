@@ -1,3 +1,14 @@
+/*
+ * @Author: 陈德立*******419287484@qq.com
+ * @Date: 2024-07-02 16:31:49
+ * @LastEditTime: 2024-07-03 11:03:58
+ * @LastEditors: 陈德立*******419287484@qq.com
+ * @Github: https://github.com/Alan1034
+ * @Description: 参考https://zhuanlan.zhihu.com/p/630160783
+ * @FilePath: \static-service\serviceRegistry.js
+ * 
+ */
+
 const app = require('./app');
 const authApp = require('./subsystem/auth/app');
 
